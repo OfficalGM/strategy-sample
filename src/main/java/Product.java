@@ -42,4 +42,9 @@ public class Product {
     public double getWeight() {
         return weight;
     }
+
+    public double getSize(){
+        return getLength() * getWidth() * getHeight();
+    }
+
 }
