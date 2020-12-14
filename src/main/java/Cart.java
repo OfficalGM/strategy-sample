@@ -1,23 +1,15 @@
 public class Cart {
 
-    private final BlackCat blackCat = new BlackCat();
-
-    private final Hsinchu hsinchu = new Hsinchu();
-
-    private final PostOffice postOffice = new PostOffice();
-
-    public double shippingFee(String shipper, Product product) {
-        switch (shipper) {
+    public double shippingFee(String shipperName, Product product) {
+        switch (shipperName) {
             case "black cat":
-                return blackCat.calculateFee(product);
-            case "hsinchu": {
-                return hsinchu.calculateFee(product);
-            }
-            case "post office": {
-                return postOffice.calculateFee(product);
-            }
+                return new BlackCat().calculateFee(product);
+            case "hsinchu":
+                return new Hsinchu().calculateFee(product);
+            case "post office":
+                return new PostOffice().calculateFee(product);
             default:
-                throw new IllegalArgumentException("shipper not exist");
+                throw new IllegalArgumentException("shipperName not exist");
         }
     }
 
