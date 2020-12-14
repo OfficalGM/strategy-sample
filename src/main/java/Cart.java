@@ -1,9 +1,11 @@
 public class Cart {
 
+    private final BlackCat blackCat = new BlackCat();
+
     public double shippingFee(String shipper, Product product) {
         switch (shipper) {
             case "black cat":
-                return calculateByBlackCat(product);
+                return blackCat.calculateFee(product);
             case "hsinchu": {
                 return calculateByHsinchu(product);
             }
@@ -15,13 +17,6 @@ public class Cart {
         }
     }
 
-    double calculateByBlackCat(Product product) {
-        if (product.getWeight() > 20) {
-            return 500;
-        } else {
-            return 100 + product.getWeight() * 10;
-        }
-    }
 
     double calculateByHsinchu(Product product) {
         if (product.getLength() > 100 || product.getWidth() > 100 || product.getHeight() > 100) {
