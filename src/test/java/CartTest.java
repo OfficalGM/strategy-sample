@@ -6,9 +6,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class CartTest {
 
     private final Cart cart = new Cart();
-    private final String blackCat = "black cat";
+    private final String blackCat = "black_cat";
     private final String hsinchu = "hsinchu";
-    private final String postOffice = "post office";
+    private final String postOffice = "post_office";
 
     @Test
     void black_cat_with_light_weight() {

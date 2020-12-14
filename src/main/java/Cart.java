@@ -2,17 +2,18 @@ import java.util.HashMap;
 
 public class Cart {
 
-    private HashMap<String, Shipper> shipperMap = new HashMap<>() {{
-        put("black cat", new BlackCat());
-        put("hsinchu", new Hsinchu());
-        put("post office", new PostOffice());
+    private HashMap<ShipperType, Shipper> shipperMap = new HashMap<>() {{
+        put(ShipperType.BLACK_CAT, new BlackCat());
+        put(ShipperType.HSINCHU, new Hsinchu());
+        put(ShipperType.POST_OFFICE, new PostOffice());
     }};
 
     public double shippingFee(String shipperName, Product product) {
-        if (!shipperMap.containsKey(shipperName)) {
+        final ShipperType shipperType = ShipperType.getEnum(shipperName);
+        if (!shipperMap.containsKey(shipperType)) {
             throw new IllegalArgumentException("shipper not exist");
         }
-        return shipperMap.get(shipperName).calculateFee(product);
+        return shipperMap.get(shipperType).calculateFee(product);
     }
 
 }
